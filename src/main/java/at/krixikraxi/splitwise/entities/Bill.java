@@ -16,8 +16,9 @@ public class Bill {
     private User fromUser;
     private User toUser;
 
-    //public Bill() {
-    //}
+    public Bill() {
+        // default constructor for spring
+    }
 
     public Bill(String billName, String billDescription, User fromUser) {
         this.billName = billName;
@@ -29,6 +30,46 @@ public class Bill {
         this.billName = billName;
         this.billDescription = billDescription;
         this.fromUser = fromUser;
+        this.toUser = toUser;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getBillName() {
+        return billName;
+    }
+
+    public void setBillName(String billName) {
+        this.billName = billName;
+    }
+
+    public String getBillDescription() {
+        return billDescription;
+    }
+
+    public void setBillDescription(String billDescription) {
+        this.billDescription = billDescription;
+    }
+
+    public User getFromUser() {
+        return fromUser;
+    }
+
+    public void setFromUser(User fromUser) {
+        this.fromUser = fromUser;
+    }
+
+    public User getToUser() {
+        return toUser;
+    }
+
+    public void setToUser(User toUser) {
         this.toUser = toUser;
     }
 
