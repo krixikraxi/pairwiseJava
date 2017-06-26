@@ -28,5 +28,7 @@ public class SplitwiseApplication extends Application {
         primaryStage.setHeight(700);
         primaryStage.setTitle("SplitWise MainView");
         primaryStage.show();
+
+        log.debug("Primary Stage up!");
     }
 }
