@@ -5,6 +5,7 @@ import at.krixikraxi.splitwise.repository.BillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -14,11 +15,10 @@ public class SplitwiseService {
     @Autowired
     private BillRepository billRepository;
 
-    public String helloWorld() {
-        return "hello world!";
+    public SplitwiseService() {
+
     }
 
-    @Transactional
     public Long saveBill(Bill bill) {
         Bill savedBill = billRepository.save(bill);
         return savedBill.getId();
