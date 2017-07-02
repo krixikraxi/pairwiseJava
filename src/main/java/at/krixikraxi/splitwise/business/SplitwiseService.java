@@ -15,10 +15,6 @@ public class SplitwiseService {
     @Autowired
     private BillRepository billRepository;
 
-    public SplitwiseService() {
-
-    }
-
     public Long saveBill(Bill bill) {
         Bill savedBill = billRepository.save(bill);
         return savedBill.getId();

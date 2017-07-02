@@ -2,16 +2,16 @@ package at.krixikraxi.splitwise.views;
 
 import at.krixikraxi.splitwise.business.SplitwiseService;
 import at.krixikraxi.splitwise.entities.Bill;
+import at.krixikraxi.splitwise.views.tables.BaseTablePresenter;
+import at.krixikraxi.splitwise.views.tables.BaseTableView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableView;
+import javafx.scene.layout.HBox;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import javax.inject.Inject;
 
 @Component
 public class MainPresenter {
@@ -22,17 +22,23 @@ public class MainPresenter {
     private SplitwiseService splitwiseService;
 
     @FXML
-    private TableView<Bill> billTableView;
+    private HBox tableHBox;
 
     private ObservableList<Bill> billObservableList;
 
     @SuppressWarnings("unused")
     public void initialize() {
         log.debug("Init Presenter...");
-        billTableView.setItems(billObservableList);
 
         billObservableList = FXCollections.observableArrayList();
-        //billObservableList.setAll(splitwiseService.getAllBills());
+        billObservableList.setAll(splitwiseService.getAllBills());
+
+        // add the table
+        BaseTableView baseTableView = new BaseTableView();
+        @SuppressWarnings("unchecked")
+        BaseTablePresenter<Bill> baseTablePresenter = (BaseTablePresenter<Bill>) baseTableView.getPresenter();
+        baseTablePresenter.setItems(billObservableList);
+        tableHBox.getChildren().add(baseTableView.getView());
     }
 
     @FXML

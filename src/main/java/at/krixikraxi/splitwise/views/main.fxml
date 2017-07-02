@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="579.0" prefWidth="892.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.krixikraxi.splitwise.views.MainPresenter">
     <children>
-        <Button layoutX="560.0" layoutY="14.0" mnemonicParsing="false" onAction="#createNewBill" text="Create Bill" />
-      <TableView fx:id="billTableView" layoutX="14.0" layoutY="14.0" prefHeight="275.0" prefWidth="537.0">
-         <columns>
-          <TableColumn prefWidth="55.0" text="Bill ID" />
-          <TableColumn prefWidth="71.0" text="Bill Name" />
-            <TableColumn prefWidth="105.0" text="Bill Description" />
-            <TableColumn prefWidth="71.0" text="Bill From" />
-            <TableColumn prefWidth="57.0" text="Bill To" />
-         </columns></TableView>
+      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <HBox fx:id="tableHBox" prefHeight="100.0" prefWidth="200.0" />
+              <Button mnemonicParsing="false" onAction="#createNewBill" text="Create Bill" />
+         </children>
+      </VBox>
     </children>
 </AnchorPane>
