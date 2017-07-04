@@ -2,6 +2,8 @@ package at.krixikraxi.splitwise.views;
 
 import at.krixikraxi.splitwise.business.SplitwiseService;
 import at.krixikraxi.splitwise.entities.Bill;
+import at.krixikraxi.splitwise.views.billdetails.BillDetailsPresenter;
+import at.krixikraxi.splitwise.views.billdetails.BillDetailsView;
 import at.krixikraxi.splitwise.views.tables.BaseTablePresenter;
 import at.krixikraxi.splitwise.views.tables.BaseTableView;
 import javafx.collections.FXCollections;
@@ -33,12 +35,21 @@ public class MainPresenter {
         billObservableList = FXCollections.observableArrayList();
         billObservableList.setAll(splitwiseService.getAllBills());
 
-        // add the table
+        // add the table view
         BaseTableView baseTableView = new BaseTableView();
         @SuppressWarnings("unchecked")
         BaseTablePresenter<Bill> baseTablePresenter = (BaseTablePresenter<Bill>) baseTableView.getPresenter();
         baseTablePresenter.setItems(billObservableList);
         tableHBox.getChildren().add(baseTableView.getView());
+
+        // add the edit/add bill view
+        BillDetailsView billDetailsView = new BillDetailsView();
+        @SuppressWarnings("unchecked")
+        BillDetailsPresenter billDetailsPresenter = (BillDetailsPresenter) billDetailsView.getPresenter();
+        tableHBox.getChildren().add(billDetailsView.getView());
+
+        //set the dependencies
+        billDetailsPresenter.setBillObservableList(billObservableList);
     }
 
     @FXML

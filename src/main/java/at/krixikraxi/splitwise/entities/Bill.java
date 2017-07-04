@@ -81,6 +81,6 @@ public class Bill {
     }
 
     public enum User {
-        ALEX,MANU;
+        ALEX,MANU,EMPTY;
     }
 }
