@@ -51,12 +51,4 @@ public class MainPresenter {
         //set the dependencies
         billDetailsPresenter.setBillObservableList(billObservableList);
     }
-
-    @FXML
-    private void createNewBill() {
-        log.debug("create a new bill");
-        Bill b = new Bill("Bill1", "Bill One", Bill.User.ALEX);
-        splitwiseService.saveBill(b);
-        billObservableList.add(b);
-    }
 }

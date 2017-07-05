@@ -3,7 +3,6 @@ package at.krixikraxi.splitwise.views.billdetails;
 
 import at.krixikraxi.splitwise.business.SplitwiseService;
 import at.krixikraxi.splitwise.entities.Bill;
-import at.krixikraxi.splitwise.views.MainPresenter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -25,6 +24,9 @@ public class BillDetailsPresenter {
 
     @FXML
     private TextField billDescriptionTextField;
+
+    @FXML
+    private TextField billAmountTextField;
 
     @FXML
     private ChoiceBox<Bill.User> billFromChoiceBox;
@@ -52,9 +54,10 @@ public class BillDetailsPresenter {
         } else if(billFromChoiceBox.getValue() == Bill.User.EMPTY && billToChoiceBox.getValue() == Bill.User.EMPTY) {
             log.debug("from and to user empty");
         } else {
-            Bill newBill = new Bill(billNameTextField.getText(), billDescriptionTextField.getText(), billFromChoiceBox.getValue(), billToChoiceBox.getValue());
-            splitwiseService.saveBill(newBill);
-            billObservableList.add(newBill);
+            log.debug("create a new bill");
+            Bill newBill = new Bill(billNameTextField.getText(), billDescriptionTextField.getText(), Double.parseDouble(billAmountTextField.getText()), billFromChoiceBox.getValue(), billToChoiceBox.getValue());
+            Bill savedBill = splitwiseService.saveBill(newBill);
+            billObservableList.add(savedBill);
         }
     }
 

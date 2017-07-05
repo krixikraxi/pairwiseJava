@@ -9,6 +9,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 public class BaseTablePresenter<C> {
 
@@ -25,10 +27,16 @@ public class BaseTablePresenter<C> {
     private TableColumn<C, String> billDescriptionColumn;
 
     @FXML
+    private TableColumn<C, Double> billAmountColumn;
+
+    @FXML
     private TableColumn<C, Bill.User> billFromColumn;
 
     @FXML
     private TableColumn<C, Bill.User> billToColumn;
+
+    @FXML
+    private TableColumn<C, LocalDateTime> billDateTimeColumn;
 
     public BaseTablePresenter() {
     }
@@ -37,8 +45,10 @@ public class BaseTablePresenter<C> {
         billIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         billNameColumn.setCellValueFactory(new PropertyValueFactory<>("billName"));
         billDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("billDescription"));
+        billAmountColumn.setCellValueFactory(new PropertyValueFactory<>("billAmount"));
         billFromColumn.setCellValueFactory(new PropertyValueFactory<>("fromUser"));
         billToColumn.setCellValueFactory(new PropertyValueFactory<>("toUser"));
+        billDateTimeColumn.setCellValueFactory(new PropertyValueFactory<>("billDateTime"));
     }
 
     public void setItems(ObservableList<Bill> items) {

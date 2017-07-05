@@ -28,8 +28,8 @@ public class SplitwiseServiceTest {
 
     @Before
     public void setUp() throws Exception {
-        Bill bill1 = new Bill("Bill1", "Bill One", Bill.User.ALEX);
-        Bill bill2 = new Bill("Bill2", "Bill Two", Bill.User.MANU);
+        Bill bill1 = new Bill("Bill1", "Bill One", 13.50, Bill.User.ALEX, Bill.User.MANU);
+        Bill bill2 = new Bill("Bill2", "Bill Two", 17.20, Bill.User.MANU, Bill.User.MANU);
 
         splitwiseService.saveBill(bill1);
         splitwiseService.saveBill(bill2);
@@ -42,13 +42,13 @@ public class SplitwiseServiceTest {
 
     @Test
     public void safeBillToRepositoryTest() throws Exception {
-        Bill bill = new Bill("Billa", "Shopping Billa today", Bill.User.ALEX);
-        Long id = splitwiseService.saveBill(bill);
+        Bill bill = new Bill("Billa", "Shopping Billa today", 12.30,  Bill.User.ALEX, Bill.User.MANU);
+        Bill b = splitwiseService.saveBill(bill);
 
-        assertNotNull(id);
-        assertTrue(id > 0);
+        assertNotNull(b.getId());
+        assertTrue(b.getId() > 0);
 
-        Bill savedBill = splitwiseService.getBillById(id);
+        Bill savedBill = splitwiseService.getBillById(b.getId());
 
         assertNotNull(savedBill);
         assertEquals("Billa", savedBill.getBillName());

@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
 
 @Entity
 public class Bill {
@@ -13,6 +14,9 @@ public class Bill {
     private Long id;
     private String billName;
     private String billDescription;
+    private LocalDateTime billDateTime;
+    private boolean billBilled;
+    private Double billAmount;
     private User fromUser;
     private User toUser;
 
@@ -20,17 +24,15 @@ public class Bill {
         // default constructor for spring
     }
 
-    public Bill(String billName, String billDescription, User fromUser) {
+    public Bill(String billName, String billDescription, Double billAmount, User fromUser, User toUser) {
         this.billName = billName;
         this.billDescription = billDescription;
-        this.fromUser = fromUser;
-    }
-
-    public Bill(String billName, String billDescription, User fromUser, User toUser) {
-        this.billName = billName;
-        this.billDescription = billDescription;
+        this.billAmount = billAmount;
         this.fromUser = fromUser;
         this.toUser = toUser;
+
+        this.billBilled = false;
+        this.billDateTime = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -71,6 +73,30 @@ public class Bill {
 
     public void setToUser(User toUser) {
         this.toUser = toUser;
+    }
+
+    public LocalDateTime getBillDateTime() {
+        return billDateTime;
+    }
+
+    public void setBillDateTime(LocalDateTime billDateTime) {
+        this.billDateTime = billDateTime;
+    }
+
+    public boolean isBillBilled() {
+        return billBilled;
+    }
+
+    public void setBillBilled(boolean billBilled) {
+        this.billBilled = billBilled;
+    }
+
+    public Double getBillAmount() {
+        return billAmount;
+    }
+
+    public void setBillAmount(Double billAmount) {
+        this.billAmount = billAmount;
     }
 
     @Override

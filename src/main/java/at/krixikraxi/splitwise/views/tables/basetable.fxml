@@ -5,10 +5,12 @@
 
 <TableView fx:id="tableView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.krixikraxi.splitwise.views.tables.BaseTablePresenter">
   <columns>
-    <TableColumn fx:id="billIdColumn" prefWidth="75.0" text="Bill ID" />
-    <TableColumn fx:id="billNameColumn" prefWidth="75.0" text="Bill Name" />
-      <TableColumn fx:id="billDescriptionColumn" prefWidth="97.0" text="Bill Description" />
-      <TableColumn fx:id="billFromColumn" prefWidth="69.0" text="Bill From" />
-      <TableColumn fx:id="billToColumn" prefWidth="59.0" text="Bill To" />
+    <TableColumn fx:id="billIdColumn" prefWidth="75.0" text="ID" />
+    <TableColumn fx:id="billNameColumn" text="Name" />
+      <TableColumn fx:id="billDescriptionColumn" prefWidth="92.0" text="Beschreibung" />
+      <TableColumn fx:id="billAmountColumn" prefWidth="83.0" text="Betrag" />
+      <TableColumn fx:id="billFromColumn" prefWidth="71.0" text="Von" />
+      <TableColumn fx:id="billToColumn" prefWidth="71.0" text="An" />
+      <TableColumn fx:id="billDateTimeColumn" prefWidth="59.0" text="Datum" />
   </columns>
 </TableView>
