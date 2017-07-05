@@ -10,31 +10,28 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="151.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.krixikraxi.splitwise.views.billdetails.BillDetailsPresenter">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="151.0" prefWidth="403.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.krixikraxi.splitwise.views.billdetails.BillDetailsPresenter">
    <children>
       <GridPane>
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" />
-          <ColumnConstraints hgrow="SOMETIMES" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="190.0" minWidth="147.0" prefWidth="147.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="256.0" minWidth="213.0" prefWidth="256.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Rechnungs Name" />
-            <Label prefHeight="17.0" prefWidth="136.0" text="Rechnungs Beschreibung" GridPane.rowIndex="1" />
-            <Label text="Rechnung Von" GridPane.rowIndex="3" />
-            <Label text="Rechnung An" GridPane.rowIndex="4" />
-            <TextField fx:id="billNameTextField" GridPane.columnIndex="1" />
-            <TextField fx:id="billDescriptionTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ChoiceBox fx:id="billFromChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <ChoiceBox fx:id="billToChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Label text="Rechnungs Betrag" GridPane.rowIndex="2" />
-            <TextField fx:id="billAmountTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label prefHeight="17.0" prefWidth="136.0" text="Rechnungs Beschreibung" />
+            <Label text="Rechnung Von" GridPane.rowIndex="2" />
+            <Label text="Rechnung An" GridPane.rowIndex="3" />
+            <TextField fx:id="billDescriptionTextField" GridPane.columnIndex="1" />
+            <ChoiceBox fx:id="billFromChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ChoiceBox fx:id="billToChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="Rechnungs Betrag" GridPane.rowIndex="1" />
+            <TextField fx:id="billAmountTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <HBox prefHeight="30.0" prefWidth="306.0">

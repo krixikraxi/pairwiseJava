@@ -12,7 +12,6 @@ public class Bill {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String billName;
     private String billDescription;
     private LocalDateTime billDateTime;
     private boolean billBilled;
@@ -24,8 +23,7 @@ public class Bill {
         // default constructor for spring
     }
 
-    public Bill(String billName, String billDescription, Double billAmount, User fromUser, User toUser) {
-        this.billName = billName;
+    public Bill(String billDescription, Double billAmount, User fromUser, User toUser) {
         this.billDescription = billDescription;
         this.billAmount = billAmount;
         this.fromUser = fromUser;
@@ -41,14 +39,6 @@ public class Bill {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getBillName() {
-        return billName;
-    }
-
-    public void setBillName(String billName) {
-        this.billName = billName;
     }
 
     public String getBillDescription() {
@@ -102,8 +92,8 @@ public class Bill {
     @Override
     public String toString() {
         return String.format(
-                "Bill[id=%d, billName='%s', billDescription='%s', fromUser='%s', toUser='%s']",
-                id, billName, billDescription, fromUser, toUser);
+                "Bill[id=%d, billDescription='%s', fromUser='%s', toUser='%s']",
+                id, billDescription, fromUser, toUser);
     }
 
     public enum User {

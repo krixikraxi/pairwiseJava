@@ -20,9 +20,6 @@ public class BillDetailsPresenter {
     private SplitwiseService splitwiseService;
 
     @FXML
-    private TextField billNameTextField;
-
-    @FXML
     private TextField billDescriptionTextField;
 
     @FXML
@@ -55,7 +52,7 @@ public class BillDetailsPresenter {
             log.debug("from and to user empty");
         } else {
             log.debug("create a new bill");
-            Bill newBill = new Bill(billNameTextField.getText(), billDescriptionTextField.getText(), Double.parseDouble(billAmountTextField.getText()), billFromChoiceBox.getValue(), billToChoiceBox.getValue());
+            Bill newBill = new Bill(billDescriptionTextField.getText(), Double.parseDouble(billAmountTextField.getText()), billFromChoiceBox.getValue(), billToChoiceBox.getValue());
             Bill savedBill = splitwiseService.saveBill(newBill);
             billObservableList.add(savedBill);
         }

@@ -28,8 +28,8 @@ public class SplitwiseServiceTest {
 
     @Before
     public void setUp() throws Exception {
-        Bill bill1 = new Bill("Bill1", "Bill One", 13.50, Bill.User.ALEX, Bill.User.MANU);
-        Bill bill2 = new Bill("Bill2", "Bill Two", 17.20, Bill.User.MANU, Bill.User.MANU);
+        Bill bill1 = new Bill("Bill1",13.50, Bill.User.ALEX, Bill.User.MANU);
+        Bill bill2 = new Bill("Bill2",17.20, Bill.User.MANU, Bill.User.MANU);
 
         splitwiseService.saveBill(bill1);
         splitwiseService.saveBill(bill2);
@@ -42,7 +42,7 @@ public class SplitwiseServiceTest {
 
     @Test
     public void safeBillToRepositoryTest() throws Exception {
-        Bill bill = new Bill("Billa", "Shopping Billa today", 12.30,  Bill.User.ALEX, Bill.User.MANU);
+        Bill bill = new Bill("Billa", 12.30,  Bill.User.ALEX, Bill.User.MANU);
         Bill b = splitwiseService.saveBill(bill);
 
         assertNotNull(b.getId());
@@ -51,8 +51,7 @@ public class SplitwiseServiceTest {
         Bill savedBill = splitwiseService.getBillById(b.getId());
 
         assertNotNull(savedBill);
-        assertEquals("Billa", savedBill.getBillName());
-        assertEquals("Shopping Billa today", savedBill.getBillDescription());
+        assertEquals("Billa", savedBill.getBillDescription());
         assertEquals(Bill.User.ALEX, savedBill.getFromUser());
     }
 
@@ -63,8 +62,7 @@ public class SplitwiseServiceTest {
         assertNotNull(billList);
         assertTrue(billList.size() > 0);
 
-        assertEquals("Bill1", billList.get(0).getBillName());
-        assertEquals("Bill One", billList.get(0).getBillDescription());
+        assertEquals("Bill1", billList.get(0).getBillDescription());
         assertEquals(Bill.User.ALEX, billList.get(0).getFromUser());
     }
 }

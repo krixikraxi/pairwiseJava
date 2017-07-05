@@ -21,9 +21,6 @@ public class BaseTablePresenter<C> {
     private TableColumn<C, Long> billIdColumn;
 
     @FXML
-    private TableColumn<C, String> billNameColumn;
-
-    @FXML
     private TableColumn<C, String> billDescriptionColumn;
 
     @FXML
@@ -43,7 +40,6 @@ public class BaseTablePresenter<C> {
 
     public void initialize() {
         billIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        billNameColumn.setCellValueFactory(new PropertyValueFactory<>("billName"));
         billDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("billDescription"));
         billAmountColumn.setCellValueFactory(new PropertyValueFactory<>("billAmount"));
         billFromColumn.setCellValueFactory(new PropertyValueFactory<>("fromUser"));
