@@ -42,20 +42,40 @@ public class BillDetailsPresenter {
         billFromChoiceBox.getSelectionModel().selectLast();
         billToChoiceBox.setItems(FXCollections.observableArrayList(Bill.User.values()));
         billToChoiceBox.getSelectionModel().selectLast();
+
+        billAmountTextField.focusedProperty().addListener((arg0, oldValue, newValue) -> {
+            if (!newValue) { //when focus lost
+                billAmountTextField.setText(billAmountTextField.getText().replace(',', '.'));
+                if(!billAmountTextField.getText().matches("[0-9]+(\\.[0-9][0-9]?)?")){
+                    billAmountTextField.setText("");
+                }
+            }
+        });
     }
 
     @FXML
     private void saveNewBill() {
-        if(billFromChoiceBox.getSelectionModel().getSelectedItem() == billToChoiceBox.getSelectionModel().getSelectedItem()) {
-            log.debug("same from and to user");
-        } else if(billFromChoiceBox.getValue() == Bill.User.EMPTY && billToChoiceBox.getValue() == Bill.User.EMPTY) {
-            log.debug("from and to user empty");
-        } else {
+        if(validateInput()) {
             log.debug("create a new bill");
             Bill newBill = new Bill(billDescriptionTextField.getText(), Double.parseDouble(billAmountTextField.getText()), billFromChoiceBox.getValue(), billToChoiceBox.getValue());
             Bill savedBill = splitwiseService.saveBill(newBill);
             billObservableList.add(savedBill);
         }
+    }
+
+    private boolean validateInput() {
+        if(billFromChoiceBox.getSelectionModel().getSelectedItem() == billToChoiceBox.getSelectionModel().getSelectedItem()) {
+            log.debug("validate error: same from and to user");
+            return false;
+        } else if(billFromChoiceBox.getValue() == Bill.User.EMPTY && billToChoiceBox.getValue() == Bill.User.EMPTY) {
+            log.debug("validate error: from and to user empty");
+            return false;
+        } else if(billDescriptionTextField.getText().isEmpty() || billAmountTextField.getText().isEmpty()) {
+            log.debug("validate error: bill description or amount is empty");
+            return false;
+        }
+        log.debug("validation ok");
+        return true;
     }
 
     public void setBillObservableList(ObservableList<Bill> billObservableList) {
