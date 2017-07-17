@@ -9,6 +9,7 @@ import at.krixikraxi.splitwise.views.tables.BaseTableView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +25,10 @@ public class MainPresenter {
     private SplitwiseService splitwiseService;
 
     @FXML
-    private HBox tableHBox;
+    private AnchorPane billTableAnchorPane;
+
+    @FXML
+    private AnchorPane billAddAnchorPane;
 
     private ObservableList<Bill> billObservableList;
 
@@ -40,13 +44,18 @@ public class MainPresenter {
         @SuppressWarnings("unchecked")
         BaseTablePresenter<Bill> baseTablePresenter = (BaseTablePresenter<Bill>) baseTableView.getPresenter();
         baseTablePresenter.setItems(billObservableList);
-        tableHBox.getChildren().add(baseTableView.getView());
+        billTableAnchorPane.getChildren().add(baseTableView.getView());
+        AnchorPane.setBottomAnchor(baseTableView.getView(), 0.0);
+        AnchorPane.setLeftAnchor(baseTableView.getView(), 0.0);
+        AnchorPane.setRightAnchor(baseTableView.getView(), 0.0);
+        AnchorPane.setTopAnchor(baseTableView.getView(), 0.0);
+
 
         // add the edit/add bill view
         BillDetailsView billDetailsView = new BillDetailsView();
         @SuppressWarnings("unchecked")
         BillDetailsPresenter billDetailsPresenter = (BillDetailsPresenter) billDetailsView.getPresenter();
-        tableHBox.getChildren().add(billDetailsView.getView());
+        billAddAnchorPane.getChildren().add(billDetailsView.getView());
 
         //set the dependencies
         billDetailsPresenter.setBillObservableList(billObservableList);

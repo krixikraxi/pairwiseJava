@@ -37,10 +37,11 @@ public class SplitwiseApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setScene(new Scene(new MainView().getView()));
-        primaryStage.setMinWidth(800);
+        primaryStage.setMinWidth(750);
         primaryStage.setMinHeight(600);
-        primaryStage.setWidth(1000);
-        primaryStage.setHeight(700);
+        primaryStage.setWidth(750);
+        primaryStage.setHeight(600);
+        //primaryStage.setResizable(false);
         primaryStage.setTitle("SplitWise MainView");
         primaryStage.show();
 

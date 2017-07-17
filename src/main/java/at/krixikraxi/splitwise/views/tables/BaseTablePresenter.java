@@ -45,6 +45,13 @@ public class BaseTablePresenter<C> {
         billFromColumn.setCellValueFactory(new PropertyValueFactory<>("fromUser"));
         billToColumn.setCellValueFactory(new PropertyValueFactory<>("toUser"));
         billDateTimeColumn.setCellValueFactory(new PropertyValueFactory<>("billDateTime"));
+
+        billIdColumn.prefWidthProperty().bind(tableView.widthProperty().multiply(0.05));
+        billDescriptionColumn.prefWidthProperty().bind(tableView.widthProperty().multiply(0.35));
+        billAmountColumn.prefWidthProperty().bind(tableView.widthProperty().multiply(0.15));
+        billFromColumn.prefWidthProperty().bind(tableView.widthProperty().multiply(0.10));
+        billToColumn.prefWidthProperty().bind(tableView.widthProperty().multiply(0.10));
+        billDateTimeColumn.prefWidthProperty().bind(tableView.widthProperty().multiply(0.24));
     }
 
     public void setItems(ObservableList<Bill> items) {
